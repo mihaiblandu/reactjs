@@ -1,0 +1,26 @@
+version: '3'
+services:
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+    links:
+      - app-a
+      - app-b
+      - reactjs
+    depends_on:
+      - app-a
+      - app-b
+      - reactjs
+  app-a:
+    image: app-a
+    ports:
+      - "8080"
+  app-b:
+    image: app-b
+    ports:
+      - "8080"
+  reactjs:
+    image: reactjs
+    ports:
+      - "3000"

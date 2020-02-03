@@ -1,0 +1,21 @@
+
+http {
+ server {
+   listen 80;
+   location /service1 {
+     proxy_pass http://app-a:8080/service1/;
+   }
+   location /service2 {
+     proxy_pass http://app-b:8080/service1/;
+   }
+   location / {
+        proxy_pass http://reactjs:3000/;
+   }
+
+   location /reactjs {
+        proxy_pass http://reactjs:3000/;
+   }
+
+ }
+}
+events { worker_connections 1024; }
